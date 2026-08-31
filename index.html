@@ -150,6 +150,15 @@
     color: var(--teal);
     margin: 0 0 20px;
   }
+  .project-link{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+  }
+  .project + .project{
+    margin-top: 44px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
   ul.plist{
     margin: 0; padding: 0 0 0 18px;
     list-style: none;
@@ -290,18 +299,47 @@
   </section>
 
   <section id="project">
-    <p class="section-path"><span class="dim">~/</span>projects/ecommerce.md</p>
-    <div class="project-head">
-      <h2 class="stitle">E-Commerce Web Application</h2>
+    <p class="section-path"><span class="dim">~/</span>projects</p>
+
+    <div class="project">
+      <div class="project-head">
+        <h2 class="stitle">E-Commerce Web Application</h2>
+      </div>
+      <p class="project-stack">Python · Django · Django REST Framework · SQL · AI-assisted frontend</p>
+      <ul class="plist">
+        <li>Architected a Django + DRF backend covering product catalog, authentication, cart management, and order processing.</li>
+        <li>Designed and optimized relational SQL schemas for complex data models, keeping queries fast and data consistent across transactions.</li>
+        <li>Used AI tools to rapidly prototype a responsive frontend that plugs directly into the backend's RESTful APIs.</li>
+        <li>Built and styled the AI-generated components — product listings, cart, checkout — with HTML, CSS, and Tailwind, refined through iterative prompting.</li>
+        <li>Secured endpoints with token authentication, request validation, and clean error handling.</li>
+      </ul>
     </div>
-    <p class="project-stack">Python · Django · Django REST Framework · SQL · AI-assisted frontend</p>
-    <ul class="plist">
-      <li>Architected a Django + DRF backend covering product catalog, authentication, cart management, and order processing.</li>
-      <li>Designed and optimized relational SQL schemas for complex data models, keeping queries fast and data consistent across transactions.</li>
-      <li>Used AI tools to rapidly prototype a responsive frontend that plugs directly into the backend's RESTful APIs.</li>
-      <li>Built and styled the AI-generated components — product listings, cart, checkout — with HTML, CSS, and Tailwind, refined through iterative prompting.</li>
-      <li>Secured endpoints with token authentication, request validation, and clean error handling.</li>
-    </ul>
+
+    <div class="project">
+      <div class="project-head">
+        <h2 class="stitle">Space — Search Engine</h2>
+      </div>
+      <p class="project-stack">Python · Django/Flask · Indexing &amp; ranking</p>
+      <ul class="plist">
+        <li>Built a search engine from scratch, crawling and indexing roughly 10,000 pages.</li>
+        <li>Designed the backend for query parsing, ranking, and serving fast search results over the full index.</li>
+        <li>Focused on efficient data structures to keep lookups quick as the page count scaled.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h2 class="stitle">A House Held by the Hills</h2>
+        <a class="project-link" href="./villa-tour.html" target="_blank" rel="noopener">View demo &rarr;</a>
+      </div>
+      <p class="project-stack">HTML · CSS · JavaScript · Scroll-driven video</p>
+      <ul class="plist">
+        <li>Built a scroll-driven virtual property tour: scrolling scrubs an FPV drone video in sync with the page.</li>
+        <li>Designed a telemetry-style HUD overlay — timecode, altitude, compass — that updates live as the video plays.</li>
+        <li>Wrote chapter logic that fades in contextual copy panels as the video crosses each defined time range.</li>
+        <li>Handled performance and accessibility: reduced-motion support, resize-aware layout, mobile breakpoints.</li>
+      </ul>
+    </div>
   </section>
 
   <section id="education">
