@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shani Kumar — Full Stack Developer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg: #10131A;
+    --surface: #171B24;
+    --line: #2A2F3B;
+    --text: #E7E5DE;
+    --text-dim: #9099A8;
+    --amber: #E8A33D;
+    --teal: #6FB3AC;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.55;
+  }
+
+  ::selection{ background: var(--amber); color: #10131A; }
+
+  .wrap{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  code, .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  a{ color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(232,163,61,0.35); }
+  a:hover{ border-bottom-color: var(--amber); }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding: 96px 0 64px;
+  }
+  .prompt-line{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--teal);
+    margin: 0 0 18px;
+  }
+  .prompt-line .cursor{
+    display:inline-block;
+    width: 8px; height: 15px;
+    background: var(--amber);
+    margin-left: 4px;
+    vertical-align: -2px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  h1{
+    font-size: clamp(38px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    line-height: 1.05;
+  }
+  .role{
+    font-size: 18px;
+    color: var(--text-dim);
+    margin: 0 0 28px;
+  }
+  .role .amber{ color: var(--amber); }
+
+  .lede{
+    font-size: 17px;
+    color: var(--text);
+    max-width: 54ch;
+    margin: 0 0 30px;
+  }
+
+  .contact-row{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .contact-row span.sep{ color: var(--line); }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding: 46px 0;
+    border-top: 1px solid var(--line);
+  }
+  .section-path{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--teal);
+    margin: 0 0 22px;
+  }
+  .section-path .dim{ color: var(--text-dim); }
+
+  h2.stitle{
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  p.body-text{
+    font-size: 16px;
+    color: var(--text);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-block{ margin-bottom: 20px; }
+  .skill-block:last-child{ margin-bottom: 0; }
+  .skill-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--amber);
+    margin: 0 0 8px;
+  }
+  .skill-items{
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .skill-items b{ color: var(--text); font-weight: 500; }
+
+  /* ---------- PROJECT ---------- */
+  .project-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .project-stack{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    margin: 0 0 20px;
+  }
+  ul.plist{
+    margin: 0; padding: 0 0 0 18px;
+    list-style: none;
+  }
+  ul.plist li{
+    position: relative;
+    padding-left: 4px;
+    margin-bottom: 12px;
+    font-size: 15.5px;
+    color: var(--text);
+    max-width: 60ch;
+  }
+  ul.plist li::before{
+    content: "›";
+    position: absolute;
+    left: -18px;
+    color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .edu-time{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .edu-focus{
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 50px 0 70px;
+    border-top: 1px solid var(--line);
+  }
+  footer .ftitle{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  footer p{
+    color: var(--text-dim);
+    font-size: 15px;
+    margin: 0 0 22px;
+    max-width: 50ch;
+  }
+  footer .links{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 14px;
+    display:flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 520px){
+    header.hero{ padding: 64px 0 48px; }
+    section{ padding: 36px 0; }
+    .contact-row{ gap: 10px 16px; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation: none; opacity: 1; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="prompt-line">shani@dev:~$ whoami<span class="cursor"></span></p>
+    <h1>Shani Kumar</h1>
+    <p class="role">Full Stack Developer <span class="amber">·</span> BCA Student, Delhi</p>
+    <p class="lede">I build backend systems with Django and REST APIs, design the databases underneath them, and use AI tools to turn that logic into interfaces people can actually use.</p>
+    <div class="contact-row">
+      <span>Delhi, India</span>
+      <span class="sep">/</span>
+      <a href="mailto:shanikumar14252@gmail.com">shanikumar14252@gmail.com</a>
+      <span class="sep">/</span>
+      <span>+91 8851082260</span>
+      <span class="sep">/</span>
+      <a href="https://www.linkedin.com/in/shani-kumar-335293365" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">/</span>
+      <a href="https://github.com/shani-kr-devel" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <p class="section-path"><span class="dim">~/</span>about</p>
+    <p class="body-text">
+      I specialize in scalable web APIs and server-side architecture — Python, Django, and relational databases form the core of what I build. Alongside that, I've picked up a practical frontend workflow: using AI tools to prototype and build responsive interfaces fast, then wiring them straight into the APIs I've already designed. Strong on data structures, algorithms, and object-oriented design, and always looking to bring clean, maintainable code to real projects.
+    </p>
+  </section>
+
+  <section id="skills">
+    <p class="section-path"><span class="dim">~/</span>skills</p>
+
+    <div class="skill-block">
+      <p class="skill-label">backend &amp; web</p>
+      <p class="skill-items"><b>Python</b>, <b>Django</b>, Django REST Framework, RESTful APIs, HTML, CSS</p>
+    </div>
+
+    <div class="skill-block">
+      <p class="skill-label">frontend (ai-assisted)</p>
+      <p class="skill-items">AI-generated UI prototyping, responsive design, Tailwind CSS, component-based layouts, JavaScript basics, Figma-to-code workflows</p>
+    </div>
+
+    <div class="skill-block">
+      <p class="skill-label">languages &amp; core cs</p>
+      <p class="skill-items">C, C++, Java, SQL, Data Structures &amp; Algorithms, Object-Oriented Programming</p>
+    </div>
+
+    <div class="skill-block">
+      <p class="skill-label">ai &amp; data</p>
+      <p class="skill-items">GPT API, prompt chaining, AI-assisted prototyping, Pandas, NumPy</p>
+    </div>
+
+    <div class="skill-block">
+      <p class="skill-label">tools</p>
+      <p class="skill-items">Git, GitHub, VS Code, Jupyter Notebook, Google Colab</p>
+    </div>
+  </section>
+
+  <section id="project">
+    <p class="section-path"><span class="dim">~/</span>projects/ecommerce.md</p>
+    <div class="project-head">
+      <h2 class="stitle">E-Commerce Web Application</h2>
+    </div>
+    <p class="project-stack">Python · Django · Django REST Framework · SQL · AI-assisted frontend</p>
+    <ul class="plist">
+      <li>Architected a Django + DRF backend covering product catalog, authentication, cart management, and order processing.</li>
+      <li>Designed and optimized relational SQL schemas for complex data models, keeping queries fast and data consistent across transactions.</li>
+      <li>Used AI tools to rapidly prototype a responsive frontend that plugs directly into the backend's RESTful APIs.</li>
+      <li>Built and styled the AI-generated components — product listings, cart, checkout — with HTML, CSS, and Tailwind, refined through iterative prompting.</li>
+      <li>Secured endpoints with token authentication, request validation, and clean error handling.</li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <p class="section-path"><span class="dim">~/</span>education</p>
+    <div class="edu-row">
+      <h2 class="stitle" style="margin-bottom:0;">Bachelor of Computer Applications</h2>
+      <span class="edu-time">2024 — present</span>
+    </div>
+    <p class="edu-focus">Focus: software engineering, data structures &amp; algorithms, relational database management, web architecture.</p>
+  </section>
+
+  <footer>
+    <p class="ftitle">Let's build something.</p>
+    <p>Open to backend and full stack roles, internships, and collaborative projects. Reach out any time.</p>
+    <div class="links">
+      <a href="mailto:shanikumar14252@gmail.com">Email</a>
+      <span style="color:var(--line)">/</span>
+      <a href="https://www.linkedin.com/in/shani-kumar-335293365" target="_blank" rel="noopener">LinkedIn</a>
+      <span style="color:var(--line)">/</span>
+      <a href="https://github.com/shani-kr-devel" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
