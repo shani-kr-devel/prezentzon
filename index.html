@@ -1,369 +1,1857 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shani Kumar — Full Stack Developer</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  :root{
-    --bg: #10131A;
-    --surface: #171B24;
-    --line: #2A2F3B;
-    --text: #E7E5DE;
-    --text-dim: #9099A8;
-    --amber: #E8A33D;
-    --teal: #6FB3AC;
-  }
+  <title>Shani Kumar — Full Stack Developer</title>
 
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
+  <meta
+    name="description"
+    content="Portfolio of Shani Kumar, a Full Stack Developer specializing in Python, Django, REST APIs and modern web development."
+  />
 
-  body{
-    margin:0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.55;
-  }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
 
-  ::selection{ background: var(--amber); color: #10131A; }
+    :root {
+      --cream: #f4f1ea;
+      --paper: #faf9f5;
+      --white: #ffffff;
+      --black: #11110f;
+      --dark: #252420;
+      --muted: #706e67;
+      --line: #d8d5cc;
 
-  .wrap{
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
+      --orange: #e9673d;
+      --yellow: #e9c46a;
+      --blue: #6877d8;
+      --green: #617b63;
 
-  code, .mono{ font-family: 'JetBrains Mono', monospace; }
+      --max-width: 1280px;
+    }
 
-  a{ color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(232,163,61,0.35); }
-  a:hover{ border-bottom-color: var(--amber); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ---------- HERO ---------- */
-  header.hero{
-    padding: 96px 0 64px;
-  }
-  .prompt-line{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 14px;
-    color: var(--teal);
-    margin: 0 0 18px;
-  }
-  .prompt-line .cursor{
-    display:inline-block;
-    width: 8px; height: 15px;
-    background: var(--amber);
-    margin-left: 4px;
-    vertical-align: -2px;
-    animation: blink 1.1s steps(1) infinite;
-  }
-  @keyframes blink{ 50%{ opacity: 0; } }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  h1{
-    font-size: clamp(38px, 6vw, 56px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 6px;
-    line-height: 1.05;
-  }
-  .role{
-    font-size: 18px;
-    color: var(--text-dim);
-    margin: 0 0 28px;
-  }
-  .role .amber{ color: var(--amber); }
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-  .lede{
-    font-size: 17px;
-    color: var(--text);
-    max-width: 54ch;
-    margin: 0 0 30px;
-  }
+    ::selection {
+      background: var(--black);
+      color: var(--cream);
+    }
 
-  .contact-row{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-  .contact-row span.sep{ color: var(--line); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* ---------- SECTIONS ---------- */
-  section{
-    padding: 46px 0;
-    border-top: 1px solid var(--line);
-  }
-  .section-path{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--teal);
-    margin: 0 0 22px;
-  }
-  .section-path .dim{ color: var(--text-dim); }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-  h2.stitle{
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0 0 14px;
-    letter-spacing: -0.01em;
-  }
+    .container {
+      width: min(var(--max-width), calc(100% - 80px));
+      margin: auto;
+    }
 
-  p.body-text{
-    font-size: 16px;
-    color: var(--text);
-    max-width: 62ch;
-    margin: 0;
-  }
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
 
-  /* ---------- SKILLS ---------- */
-  .skill-block{ margin-bottom: 20px; }
-  .skill-block:last-child{ margin-bottom: 0; }
-  .skill-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--amber);
-    margin: 0 0 8px;
-  }
-  .skill-items{
-    font-size: 15px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-  .skill-items b{ color: var(--text); font-weight: 500; }
+    .navbar {
+      position: relative;
+      z-index: 100;
+      background: var(--cream);
+    }
 
-  /* ---------- PROJECT ---------- */
-  .project-head{
-    display:flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .project-stack{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--teal);
-    margin: 0 0 20px;
-  }
-  .project-link{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-  }
-  .project + .project{
-    margin-top: 44px;
-    padding-top: 36px;
-    border-top: 1px solid var(--line);
-  }
-  ul.plist{
-    margin: 0; padding: 0 0 0 18px;
-    list-style: none;
-  }
-  ul.plist li{
-    position: relative;
-    padding-left: 4px;
-    margin-bottom: 12px;
-    font-size: 15.5px;
-    color: var(--text);
-    max-width: 60ch;
-  }
-  ul.plist li::before{
-    content: "›";
-    position: absolute;
-    left: -18px;
-    color: var(--amber);
-    font-weight: 600;
-  }
+    .nav-inner {
+      min-height: 90px;
 
-  /* ---------- EDUCATION ---------- */
-  .edu-row{
-    display:flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 4px;
-  }
-  .edu-time{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-  .edu-focus{
-    font-size: 15px;
-    color: var(--text-dim);
-    margin-top: 8px;
-  }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    padding: 50px 0 70px;
-    border-top: 1px solid var(--line);
-  }
-  footer .ftitle{
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0 0 12px;
-  }
-  footer p{
-    color: var(--text-dim);
-    font-size: 15px;
-    margin: 0 0 22px;
-    max-width: 50ch;
-  }
-  footer .links{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 14px;
-    display:flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+      border-bottom: 1px solid var(--line);
+    }
 
-  @media (max-width: 520px){
-    header.hero{ padding: 64px 0 48px; }
-    section{ padding: 36px 0; }
-    .contact-row{ gap: 10px 16px; }
-  }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
 
-  a:focus-visible, button:focus-visible{
-    outline: 2px solid var(--amber);
-    outline-offset: 3px;
-  }
+    .logo span {
+      color: var(--orange);
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .cursor{ animation: none; opacity: 1; }
-    html{ scroll-behavior: auto; }
-  }
-</style>
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a:not(.nav-contact)::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--black);
+
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-contact {
+      padding: 11px 18px;
+
+      color: var(--white);
+
+      background: var(--black);
+
+      border-radius: 100px;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav-contact:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: calc(100vh - 90px);
+
+      display: flex;
+      align-items: center;
+
+      padding: 90px 0 120px;
+
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.5fr;
+      gap: 70px;
+
+      align-items: end;
+    }
+
+    .hero-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 30px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-label::before {
+      content: "";
+
+      width: 34px;
+      height: 1px;
+
+      background: var(--orange);
+    }
+
+    .hero h1 {
+      max-width: 950px;
+
+      font-size: clamp(62px, 9.2vw, 145px);
+      line-height: 0.88;
+
+      letter-spacing: -0.075em;
+      font-weight: 600;
+    }
+
+    .hero h1 em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      color: var(--orange);
+    }
+
+    .hero-side {
+      padding-bottom: 12px;
+    }
+
+    .hero-description {
+      max-width: 420px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+      line-height: 1.8;
+
+      margin-bottom: 28px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      border-bottom: 1px solid var(--black);
+
+      padding-bottom: 6px;
+
+      transition:
+        color 0.2s ease,
+        gap 0.2s ease;
+    }
+
+    .hero-link:hover {
+      color: var(--orange);
+      gap: 18px;
+    }
+
+    /* =====================================================
+       MARQUEE
+    ===================================================== */
+
+    .marquee {
+      overflow: hidden;
+
+      background: var(--black);
+      color: var(--cream);
+
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .marquee-track {
+      width: max-content;
+
+      display: flex;
+      align-items: center;
+      gap: 35px;
+
+      padding: 18px 0;
+
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee span {
+      font-size: 13px;
+      font-weight: 500;
+
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+
+      white-space: nowrap;
+    }
+
+    .marquee .dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--orange);
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =====================================================
+       GENERAL SECTIONS
+    ===================================================== */
+
+    section {
+      padding: 150px 0;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-intro {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+
+      gap: 70px;
+
+      margin-bottom: 90px;
+    }
+
+    .section-number {
+      color: var(--orange);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 900px;
+
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.98;
+
+      letter-spacing: -0.06em;
+      font-weight: 600;
+    }
+
+    .section-title em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .section-description {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+      line-height: 1.8;
+
+      margin-top: 24px;
+    }
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-layout {
+      display: grid;
+
+      grid-template-columns: 1.15fr 0.85fr;
+
+      gap: 100px;
+
+      align-items: start;
+    }
+
+    .about-copy {
+      font-size: clamp(23px, 2.5vw, 35px);
+      line-height: 1.3;
+
+      letter-spacing: -0.035em;
+    }
+
+    .about-copy p + p {
+      margin-top: 30px;
+    }
+
+    .about-copy .accent {
+      color: var(--orange);
+    }
+
+    .about-details {
+      border-top: 1px solid var(--black);
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+
+      padding: 18px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      font-size: 14px;
+    }
+
+    .detail span:first-child {
+      color: var(--muted);
+    }
+
+    .detail span:last-child {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* =====================================================
+       SKILLS
+    ===================================================== */
+
+    .skills-list {
+      border-top: 1px solid var(--black);
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 0.2fr 0.55fr 1fr;
+
+      gap: 30px;
+
+      align-items: center;
+
+      padding: 28px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      transition:
+        padding 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .skill-row:hover {
+      padding-left: 18px;
+      padding-right: 18px;
+
+      background: var(--paper);
+    }
+
+    .skill-index {
+      color: var(--orange);
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .skill-row h3 {
+      font-size: clamp(22px, 3vw, 35px);
+
+      letter-spacing: -0.04em;
+    }
+
+    .skill-row p {
+      color: var(--muted);
+
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       PROJECTS
+    ===================================================== */
+
+    #projects {
+      background: var(--paper);
+    }
+
+    .projects {
+      display: grid;
+      gap: 100px;
+    }
+
+    .project {
+      display: grid;
+
+      grid-template-columns: 1.1fr 0.9fr;
+
+      min-height: 520px;
+
+      border-top: 1px solid var(--black);
+    }
+
+    .project:nth-child(even) {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .project:nth-child(even) .project-visual {
+      order: 2;
+    }
+
+    .project:nth-child(even) .project-content {
+      order: 1;
+    }
+
+    .project-visual {
+      min-height: 520px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 45px;
+
+      overflow: hidden;
+    }
+
+    .visual-one {
+      background: #d9d5cb;
+    }
+
+    .visual-two {
+      background: #dce0d4;
+    }
+
+    .visual-three {
+      background: #d9dce7;
+    }
+
+    .visual-four {
+      background: #e7d7ca;
+    }
+
+    .visual-window {
+      width: 100%;
+      max-width: 540px;
+
+      aspect-ratio: 4 / 3;
+
+      padding: 25px;
+
+      background: var(--black);
+
+      box-shadow: 25px 25px 0 rgba(17,17,15,0.12);
+
+      transform: rotate(-2deg);
+
+      transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+    }
+
+    .project:hover .visual-window {
+      transform: rotate(0deg) scale(1.025);
+
+      box-shadow: 15px 15px 0 rgba(17,17,15,0.15);
+    }
+
+    .visual-window::before {
+      content: "";
+
+      display: block;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--orange);
+
+      box-shadow:
+        14px 0 var(--yellow),
+        28px 0 #6d936f;
+
+      margin-bottom: 25px;
+    }
+
+    .visual-content {
+      height: calc(100% - 35px);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      color: var(--cream);
+    }
+
+    .visual-big {
+      font-size: clamp(40px, 5vw, 65px);
+
+      line-height: 0.9;
+
+      letter-spacing: -0.06em;
+    }
+
+    .visual-big em {
+      font-family: "Playfair Display", serif;
+      color: var(--orange);
+    }
+
+    .visual-code {
+      color: #a9a69c;
+
+      font-family: monospace;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 70px;
+    }
+
+    .project-number {
+      color: var(--orange);
+
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+
+      margin-bottom: 20px;
+    }
+
+    .project-content h3 {
+      max-width: 600px;
+
+      font-size: clamp(35px, 4vw, 60px);
+
+      line-height: 0.98;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 25px;
+    }
+
+    .project-content h3 em {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .project-description {
+      max-width: 570px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+
+      margin-bottom: 30px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      margin-bottom: 28px;
+    }
+
+    .tech {
+      padding: 6px 10px;
+
+      border: 1px solid var(--line);
+      border-radius: 100px;
+
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .project-features {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 7px 25px;
+
+      list-style: none;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .project-features li::before {
+      content: "— ";
+
+      color: var(--orange);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+
+      width: fit-content;
+
+      margin-top: 30px;
+
+      padding-bottom: 6px;
+
+      border-bottom: 1px solid var(--black);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .project-link:hover {
+      color: var(--orange);
+
+      border-color: var(--orange);
+    }
+
+    /* =====================================================
+       EDUCATION
+    ===================================================== */
+
+    .education-layout {
+      display: grid;
+
+      grid-template-columns: 0.4fr 1fr;
+
+      gap: 70px;
+    }
+
+    .education-card {
+      padding: 40px 0;
+
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .education-card h3 {
+      font-size: clamp(30px, 4vw, 52px);
+
+      letter-spacing: -0.05em;
+      line-height: 1;
+
+      margin-bottom: 18px;
+    }
+
+    .education-card p {
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .education-meta {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 35px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .education-meta span:last-child {
+      color: var(--orange);
+    }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact {
+      background: var(--black);
+
+      color: var(--cream);
+
+      border-bottom: none;
+    }
+
+    .contact .section-number {
+      color: var(--orange);
+    }
+
+    .contact-title {
+      max-width: 1000px;
+
+      font-size: clamp(55px, 9vw, 125px);
+
+      line-height: 0.88;
+
+      letter-spacing: -0.075em;
+
+      margin-bottom: 55px;
+    }
+
+    .contact-title em {
+      font-family: "Playfair Display", serif;
+
+      color: var(--orange);
+
+      font-weight: 500;
+    }
+
+    .contact-bottom {
+      display: flex;
+
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 50px;
+    }
+
+    .contact-description {
+      max-width: 450px;
+
+      color: #aaa79d;
+
+      font-size: 15px;
+    }
+
+    .contact-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 17px 25px;
+
+      color: var(--black);
+
+      background: var(--cream);
+
+      border-radius: 100px;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .contact-button:hover {
+      background: var(--orange);
+      color: white;
+
+      transform: translateY(-3px);
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      background: var(--black);
+
+      color: #aaa79d;
+
+      padding: 25px 0 35px;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      padding-top: 25px;
+
+      border-top: 1px solid #383733;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 25px;
+
+      font-size: 12px;
+    }
+
+    .socials a {
+      transition: color 0.2s ease;
+    }
+
+    .socials a:hover {
+      color: var(--cream);
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .container {
+        width: min(var(--max-width), calc(100% - 40px));
+      }
+
+      .nav-inner {
+        min-height: 75px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a:not(.nav-contact) {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .section-intro,
+      .education-layout {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+      }
+
+      .skill-row {
+        grid-template-columns: 0.15fr 0.6fr 1fr;
+      }
+
+      .project,
+      .project:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .project:nth-child(even) .project-visual,
+      .project:nth-child(even) .project-content {
+        order: initial;
+      }
+
+      .project-visual {
+        min-height: 420px;
+      }
+
+      .project-content {
+        padding: 55px 35px;
+      }
+
+      .contact-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .hero {
+        padding: 75px 0 90px;
+      }
+
+      .hero h1 {
+        font-size: clamp(55px, 17vw, 90px);
+      }
+
+      .section-intro {
+        margin-bottom: 55px;
+      }
+
+      .section-title {
+        font-size: 46px;
+      }
+
+      .about-copy {
+        font-size: 24px;
+      }
+
+      .skill-row {
+        grid-template-columns: 35px 1fr;
+        gap: 10px;
+      }
+
+      .skill-row p {
+        grid-column: 2;
+      }
+
+      .project-visual {
+        min-height: 330px;
+
+        padding: 25px;
+      }
+
+      .project-content {
+        padding: 45px 25px;
+      }
+
+      .project-features {
+        grid-template-columns: 1fr;
+      }
+
+      .education-meta {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+      }
+
+      .contact-title {
+        font-size: 64px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 20px;
+      }
+    }
+
+    /* =====================================================
+       ACCESSIBILITY
+    ===================================================== */
+
+    a:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 5px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="wrap">
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
 
-  <header class="hero">
-    <p class="prompt-line">shani@dev:~$ whoami<span class="cursor"></span></p>
-    <h1>Shani Kumar</h1>
-    <p class="role">Full Stack Developer <span class="amber">·</span> BCA Student, Delhi</p>
-    <p class="lede">I build backend systems with Django and REST APIs, design the databases underneath them, and use AI tools to turn that logic into interfaces people can actually use.</p>
-    <div class="contact-row">
-      <span>Delhi, India</span>
-      <span class="sep">/</span>
-      <a href="mailto:shanikumar14252@gmail.com">shanikumar14252@gmail.com</a>
-      <span class="sep">/</span>
-      <span>+91 8851082260</span>
-      <span class="sep">/</span>
-      <a href="https://www.linkedin.com/in/shani-kumar-335293365" target="_blank" rel="noopener">LinkedIn</a>
-      <span class="sep">/</span>
-      <a href="https://github.com/shani-kr-devel" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </header>
+  <nav class="navbar">
+    <div class="container nav-inner">
 
-  <section id="about">
-    <p class="section-path"><span class="dim">~/</span>about</p>
-    <p class="body-text">
-      I specialize in scalable web APIs and server-side architecture — Python, Django, and relational databases form the core of what I build. Alongside that, I've picked up a practical frontend workflow: using AI tools to prototype and build responsive interfaces fast, then wiring them straight into the APIs I've already designed. Strong on data structures, algorithms, and object-oriented design, and always looking to bring clean, maintainable code to real projects.
-    </p>
-  </section>
+      <a href="#" class="logo">
+        Shani<span>.</span>
+      </a>
 
-  <section id="skills">
-    <p class="section-path"><span class="dim">~/</span>skills</p>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Work</a>
+        <a href="#education">Education</a>
 
-    <div class="skill-block">
-      <p class="skill-label">backend &amp; web</p>
-      <p class="skill-items"><b>Python</b>, <b>Django</b>, Django REST Framework, RESTful APIs, HTML, CSS</p>
-    </div>
-
-    <div class="skill-block">
-      <p class="skill-label">frontend (ai-assisted)</p>
-      <p class="skill-items">AI-generated UI prototyping, responsive design, Tailwind CSS, component-based layouts, JavaScript basics, Figma-to-code workflows</p>
-    </div>
-
-    <div class="skill-block">
-      <p class="skill-label">languages &amp; core cs</p>
-      <p class="skill-items">C, C++, Java, SQL, Data Structures &amp; Algorithms, Object-Oriented Programming</p>
-    </div>
-
-    <div class="skill-block">
-      <p class="skill-label">ai &amp; data</p>
-      <p class="skill-items">GPT API, prompt chaining, AI-assisted prototyping, Pandas, NumPy</p>
-    </div>
-
-    <div class="skill-block">
-      <p class="skill-label">tools</p>
-      <p class="skill-items">Git, GitHub, VS Code, Jupyter Notebook, Google Colab</p>
-    </div>
-  </section>
-
-  <section id="project">
-    <p class="section-path"><span class="dim">~/</span>projects</p>
-
-    <div class="project">
-      <div class="project-head">
-        <h2 class="stitle">E-Commerce Web Application</h2>
+        <a
+          href="mailto:shanikumar14252@gmail.com"
+          class="nav-contact"
+        >
+          Let's Talk
+        </a>
       </div>
-      <p class="project-stack">Python · Django · Django REST Framework · SQL · AI-assisted frontend</p>
-      <ul class="plist">
-        <li>Architected a Django + DRF backend covering product catalog, authentication, cart management, and order processing.</li>
-        <li>Designed and optimized relational SQL schemas for complex data models, keeping queries fast and data consistent across transactions.</li>
-        <li>Used AI tools to rapidly prototype a responsive frontend that plugs directly into the backend's RESTful APIs.</li>
-        <li>Built and styled the AI-generated components — product listings, cart, checkout — with HTML, CSS, and Tailwind, refined through iterative prompting.</li>
-        <li>Secured endpoints with token authentication, request validation, and clean error handling.</li>
-      </ul>
-    </div>
 
-    <div class="project">
-      <div class="project-head">
-        <h2 class="stitle">Space — Search Engine</h2>
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <header class="hero">
+      <div class="container">
+
+        <div class="hero-grid">
+
+          <div>
+
+            <div class="hero-label">
+              Full Stack Developer
+            </div>
+
+            <h1>
+              I build
+              <em>digital</em>
+              things.
+            </h1>
+
+          </div>
+
+          <div class="hero-side">
+
+            <p class="hero-description">
+              I'm Shani Kumar — a Full Stack Developer focused on
+              Python, Django, REST APIs and building practical,
+              scalable digital products.
+            </p>
+
+            <a href="#projects" class="hero-link">
+              Explore my work →
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
-      <p class="project-stack">Python · Django/Flask · Indexing &amp; ranking</p>
-      <ul class="plist">
-        <li>Built a search engine from scratch, crawling and indexing roughly 10,000 pages.</li>
-        <li>Designed the backend for query parsing, ranking, and serving fast search results over the full index.</li>
-        <li>Focused on efficient data structures to keep lookups quick as the page count scaled.</li>
-      </ul>
-    </div>
+    </header>
 
-    <div class="project">
-      <div class="project-head">
-        <h2 class="stitle">A House Held by the Hills</h2>
-        <a class="project-link" href="./villa-tour.html" target="_blank" rel="noopener">View demo &rarr;</a>
+
+    <!-- =====================================================
+         MARQUEE
+    ===================================================== -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span>Python</span>
+        <span class="dot"></span>
+
+        <span>Django</span>
+        <span class="dot"></span>
+
+        <span>REST APIs</span>
+        <span class="dot"></span>
+
+        <span>AI</span>
+        <span class="dot"></span>
+
+        <span>SQL</span>
+        <span class="dot"></span>
+
+        <span>Full Stack Development</span>
+        <span class="dot"></span>
+
+        <span>Python</span>
+        <span class="dot"></span>
+
+        <span>Django</span>
+        <span class="dot"></span>
+
+        <span>REST APIs</span>
+        <span class="dot"></span>
+
+        <span>AI</span>
+        <span class="dot"></span>
+
+        <span>SQL</span>
+        <span class="dot"></span>
+
+        <span>Full Stack Development</span>
+
       </div>
-      <p class="project-stack">HTML · CSS · JavaScript · Scroll-driven video</p>
-      <ul class="plist">
-        <li>Built a scroll-driven virtual property tour: scrolling scrubs an FPV drone video in sync with the page.</li>
-        <li>Designed a telemetry-style HUD overlay — timecode, altitude, compass — that updates live as the video plays.</li>
-        <li>Wrote chapter logic that fades in contextual copy panels as the video crosses each defined time range.</li>
-        <li>Handled performance and accessibility: reduced-motion support, resize-aware layout, mobile breakpoints.</li>
-      </ul>
-    </div>
-  </section>
 
-  <section id="education">
-    <p class="section-path"><span class="dim">~/</span>education</p>
-    <div class="edu-row">
-      <h2 class="stitle" style="margin-bottom:0;">Bachelor of Computer Applications</h2>
-      <span class="edu-time">2024 — present</span>
     </div>
-    <p class="edu-focus">Focus: software engineering, data structures &amp; algorithms, relational database management, web architecture.</p>
-  </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ===================================================== -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="section-intro">
+
+          <div class="section-number">
+          About
+          </div>
+
+          <div>
+
+            <h2 class="section-title">
+              Developer with a
+              <em>builder's mindset.</em>
+            </h2>
+
+            <p class="section-description">
+              I enjoy turning ideas into clean, useful software —
+              from database architecture and APIs to responsive
+              interfaces.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-layout">
+
+          <div class="about-copy">
+
+            <p>
+              I'm a BCA student and Full Stack Developer based in
+              Delhi, India. My strongest area is backend development,
+              where I work primarily with
+              <span class="accent">Python, Django and Django REST Framework.</span>
+            </p>
+
+            <p>
+              I care about API design, database architecture,
+              authentication, clean code and writing software that
+              is easy to maintain.
+            </p>
+
+            <p>
+              Alongside development, I have a strong interest in
+              Data Structures & Algorithms, Object-Oriented
+              Programming and core computer science concepts.
+            </p>
+
+          </div>
+
+
+          <div class="about-details">
+
+            <div class="detail">
+              <span>Location</span>
+              <span>Delhi, India</span>
+            </div>
+
+            <div class="detail">
+              <span>Role</span>
+              <span>Full Stack Developer</span>
+            </div>
+
+            <div class="detail">
+              <span>Backend</span>
+              <span>Python / Django</span>
+            </div>
+
+            <div class="detail">
+              <span>APIs</span>
+              <span>REST / DRF</span>
+            </div>
+
+            <div class="detail">
+              <span>Databases</span>
+              <span>SQL</span>
+            </div>
+
+            <div class="detail">
+              <span>Availability</span>
+              <span>Open to opportunities</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SKILLS
+    ===================================================== -->
+
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="section-intro">
+
+          <div class="section-number">
+          Skills
+          </div>
+
+          <div>
+
+            <h2 class="section-title">
+              Tools for turning
+              <em>ideas into products.</em>
+            </h2>
+
+            <p class="section-description">
+              A practical toolkit built around backend engineering,
+              databases, frontend development and modern AI workflows.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="skills-list">
+
+          <div class="skill-row">
+
+            <div class="skill-index">01</div>
+
+            <h3>Backend</h3>
+
+            <p>
+              Python, Django, Django REST Framework, RESTful APIs,
+              authentication, validation and server-side architecture.
+            </p>
+
+          </div>
+
+
+          <div class="skill-row">
+
+            <div class="skill-index">02</div>
+
+            <h3>Databases</h3>
+
+            <p>
+              SQL, relational database design, data modeling,
+              queries, relationships and transaction-aware systems.
+            </p>
+
+          </div>
+
+
+          <div class="skill-row">
+
+            <div class="skill-index">03</div>
+
+            <h3>Frontend</h3>
+
+            <p>
+              HTML, CSS, JavaScript, Tailwind CSS, responsive layouts
+              and modern interface development.
+            </p>
+
+          </div>
+
+
+          <div class="skill-row">
+
+            <div class="skill-index">04</div>
+
+            <h3>Computer Science</h3>
+
+            <p>
+              Data Structures, Algorithms, Object-Oriented Programming,
+              problem solving and software engineering fundamentals.
+            </p>
+
+          </div>
+
+
+          <div class="skill-row">
+
+            <div class="skill-index">05</div>
+
+            <h3>AI & Data</h3>
+
+            <p>
+              GPT APIs, prompt chaining, AI-assisted prototyping,
+              Pandas and NumPy.
+            </p>
+
+          </div>
+
+
+          <div class="skill-row">
+
+            <div class="skill-index">06</div>
+
+            <h3>Developer Tools</h3>
+
+            <p>
+              Git, GitHub, VS Code, Jupyter Notebook and
+              Google Colab.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECTS
+    ===================================================== -->
+
+    <section id="projects">
+
+      <div class="container">
+
+        <div class="section-intro">
+
+          <div class="section-number">
+          Selected Work
+          </div>
+
+          <div>
+
+ 
+
+          </div>
+
+        </div>
+
+
+        <div class="projects">
+
+
+          <!-- PROJECT 01 -->
+
+          <article class="project">
+
+            <div class="project-visual visual-one">
+
+              <div class="visual-window">
+
+                <div class="visual-content">
+
+                  <div class="visual-big">
+                    Ask your
+                    <em>data.</em>
+                  </div>
+
+                  <div class="visual-code">
+                    $ connect database<br />
+                    $ discover schema<br />
+                    $ ask question<br />
+                    $ generate SQL<br />
+                    $ explain result
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-number">
+              
+              </div>
+
+              <h3>
+                Sapce —
+                <em>AI Data Assistant</em>
+              </h3>
+
+              <p class="project-description">
+                A local-first AI data assistant that connects directly
+                to SQLite, PostgreSQL, MySQL and other databases,
+                understands their schema and lets users ask questions
+                about business data in plain English.
+              </p>
+
+              <div class="tech-stack">
+
+                <span class="tech">Python</span>
+                <span class="tech">Ollama</span>
+                <span class="tech">Local LLM</span>
+                <span class="tech">SQLAlchemy</span>
+                <span class="tech">CustomTkinter</span>
+                <span class="tech">SQLite</span>
+                <span class="tech">RAG</span>
+
+              </div>
+
+              <ul class="project-features">
+
+                <li>Natural language → SQL</li>
+                <li>Local LLM</li>
+                <li>Schema discovery</li>
+                <li>Database connectivity</li>
+                <li>Read-only SQL safety</li>
+                <li>Result explanations</li>
+                <li>Threshold alerts</li>
+                <li>Background monitoring</li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 02 -->
+
+          <article class="project">
+
+            <div class="project-visual visual-two">
+
+              <div class="visual-window">
+
+                <div class="visual-content">
+
+                  <div class="visual-big">
+                    Build.
+                    <em>Sell.</em>
+                    Scale.
+                  </div>
+
+                  <div class="visual-code">
+                    POST /api/products<br />
+                    POST /api/cart<br />
+                    POST /api/orders<br />
+                    GET /api/account
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-number">
+              
+              </div>
+
+              <h3>
+                E-Commerce
+                <em>Web Application</em>
+              </h3>
+
+              <p class="project-description">
+                A full-stack e-commerce application built around a
+                Django and Django REST Framework backend, featuring
+                authentication, products, cart management and order
+                processing.
+              </p>
+
+              <div class="tech-stack">
+
+                <span class="tech">Python</span>
+                <span class="tech">Django</span>
+                <span class="tech">DRF</span>
+                <span class="tech">SQL</span>
+                <span class="tech">HTML</span>
+                <span class="tech">CSS</span>
+                <span class="tech">Tailwind</span>
+
+              </div>
+
+              <ul class="project-features">
+
+                <li>RESTful API architecture</li>
+                <li>User authentication</li>
+                <li>Product catalog</li>
+                <li>Cart management</li>
+                <li>Order processing</li>
+                <li>Database design</li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 03 -->
+
+          <article class="project">
+
+            <div class="project-visual visual-three">
+
+              <div class="visual-window">
+
+                <div class="visual-content">
+
+                  <div class="visual-big">
+                    Find
+                    <em>anything.</em>
+                  </div>
+
+                  <div class="visual-code">
+                    crawl → index → rank<br /><br />
+                    pages indexed: ~10,000<br />
+                    retrieval: optimized
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-number">
+              
+              </div>
+
+              <h3>
+                Space —
+                <em>Search Engine</em>
+              </h3>
+
+              <p class="project-description">
+                A search engine project designed to crawl, index and
+                retrieve information from approximately 10,000 pages,
+                focusing on efficient data structures, indexing and
+                search ranking.
+              </p>
+
+              <div class="tech-stack">
+
+                <span class="tech">Python</span>
+                <span class="tech">Django</span>
+                <span class="tech">Flask</span>
+                <span class="tech">Indexing</span>
+                <span class="tech">Ranking</span>
+
+              </div>
+
+              <ul class="project-features">
+
+                <li>Web crawling</li>
+                <li>Large-scale indexing</li>
+                <li>Query parsing</li>
+                <li>Search ranking</li>
+                <li>Efficient data structures</li>
+                <li>Fast retrieval</li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 04 -->
+
+          <article class="project">
+
+            <div class="project-visual visual-four">
+
+              <div class="visual-window">
+
+                <div class="visual-content">
+
+                  <div class="visual-big">
+                    A house
+                    <em>held by</em>
+                    the hills.
+                  </div>
+
+                  <div class="visual-code">
+                    scroll → fly → explore<br />
+                    altitude: 184m<br />
+                    speed: 42 km/h<br />
+                    chapter: 04
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-number">
+              
+              </div>
+
+              <h3>
+                A House Held
+                <em>by the Hills</em>
+              </h3>
+
+              <p class="project-description">
+                An interactive virtual property experience where
+                users navigate a cinematic FPV drone tour using
+                scroll-driven video. The interface combines
+                storytelling, telemetry overlays and responsive
+                interaction.
+              </p>
+
+              <div class="tech-stack">
+
+                <span class="tech">HTML</span>
+                <span class="tech">CSS</span>
+                <span class="tech">JavaScript</span>
+                <span class="tech">Video</span>
+                <span class="tech">Responsive UI</span>
+
+              </div>
+
+              <ul class="project-features">
+
+                <li>Scroll-driven video</li>
+                <li>FPV property tour</li>
+                <li>Live telemetry HUD</li>
+                <li>Timecode interface</li>
+                <li>Interactive chapters</li>
+                <li>Reduced-motion support</li>
+
+              </ul>
+
+              <a
+                href="./villa-tour.html"
+                target="_blank"
+                rel="noopener"
+                class="project-link"
+              >
+                View Live Demo →
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EDUCATION
+    ===================================================== -->
+
+    <section id="education">
+
+      <div class="container">
+
+        <div class="education-layout">
+
+          <div class="section-number">
+           Education
+          </div>
+
+          <div class="education-card">
+
+            <h3>
+              Bachelor of
+              Computer Applications
+            </h3>
+
+            <p>
+              Focus: Software Engineering, Data Structures &
+              Algorithms, Database Management and Web Architecture.
+            </p>
+
+            <div class="education-meta">
+
+              <span>
+                BCA
+              </span>
+
+              <span>
+                2024 — Present
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ===================================================== -->
+
+    <section class="contact">
+
+      <div class="container">
+
+
+        <h2 class="contact-title">
+          Let's make
+          something
+          <em>worth building.</em>
+        </h2>
+
+        <div class="contact-bottom">
+
+          <p class="contact-description">
+            I'm open to internships, backend/full-stack opportunities
+            and interesting collaborative projects.
+          </p>
+
+          <a
+            href="mailto:shanikumar14252@gmail.com"
+            class="contact-button"
+          >
+            Start a Conversation →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
 
   <footer>
-    <p class="ftitle">Let's build something.</p>
-    <p>Open to backend and full stack roles, internships, and collaborative projects. Reach out any time.</p>
-    <div class="links">
-      <a href="mailto:shanikumar14252@gmail.com">Email</a>
-      <span style="color:var(--line)">/</span>
-      <a href="https://www.linkedin.com/in/shani-kumar-335293365" target="_blank" rel="noopener">LinkedIn</a>
-      <span style="color:var(--line)">/</span>
-      <a href="https://github.com/shani-kr-devel" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </footer>
 
-</div>
+    <div class="container footer-inner">
 
-</body>
-</html>
+      <div class="footer-copy">
+        © 2026 Shani Kumar
+      </div>
+
+      <div class="socials">
+
+        <a
+          href="https://www.linkedin.com/in/shani-kumar-335293365"
+          target="
