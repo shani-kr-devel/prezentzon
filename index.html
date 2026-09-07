@@ -1532,10 +1532,19 @@
                   </div>
 
                   <div class="visual-code">
-                    POST /api/products<br />
-                    POST /api/cart<br />
-                    POST /api/orders<br />
-                    GET /api/account
+admin/ [namespace='admin']<br>
+api/ register/ [name='register_view']<br>
+api/ token/ [name='TokenView']<br>
+api/ token/refresh [name='TokenRefreshAPI']<br>
+api/ categories/ [name='category-list']<br>
+api/ products/ [name='product-list']<br>
+api/ products/<int:pk>/ [name='product-detail']<br>
+api/ cart/ [name='cart-list']<br>
+api/ cart/add/ [name='cart-add']<br>
+api/ cart/remove/ [name='cart-remove']<br>
+api/ cart/update/ [name='cart-update']<br>
+api/ orders/create/ [name='order-create']<br>
+^media/(?P<path>.*)$
                   </div>
 
                 </div>
