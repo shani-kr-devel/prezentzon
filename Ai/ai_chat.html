@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sapce — AI Data Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0b18;
+    --panel: #171429;
+    --panel-line: #2a2440;
+    --accent: #8b5cf6;
+    --accent-deep: #6d28d9;
+    --text: #f3f0ff;
+    --text-muted: #a99fc9;
+    --text-faint: #6b6289;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--accent-deep); color: var(--text); }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- Top bar ---- */
+  header.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0 0;
+  }
+
+  .brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .brand::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .top-link {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .top-link:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 96px 0 56px;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.7s ease-out 0.1s forwards;
+  }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1.title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 8vw, 64px);
+    line-height: 1.02;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--accent);
+    margin: 10px 0 28px;
+  }
+
+  .lede {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  /* ---- Live demo panel ---- */
+  .demo {
+    margin-top: 48px;
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 14px;
+    padding: 24px 26px;
+    max-width: 560px;
+  }
+
+  .demo-row { margin-bottom: 16px; }
+  .demo-row:last-child { margin-bottom: 0; }
+
+  .demo-label {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 6px;
+  }
+
+  .demo-question {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .typed {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    border-right: 2px solid var(--accent);
+    animation:
+      typing 1.1s steps(28, end) 0.3s forwards,
+      caret 0.8s step-end 5;
+  }
+
+  @keyframes typing { to { width: 28ch; } }
+  @keyframes caret { 50% { border-color: transparent; } }
+
+  .demo-sql {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    background: rgba(139, 92, 246, 0.08);
+    padding: 10px 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .demo-answer {
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  #sqlLine { animation-delay: 1.6s; }
+  #answerLine { animation-delay: 2.3s; }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* ---- Sections ---- */
+  section { padding: 64px 0; }
+
+  section.bordered { border-top: 1px solid var(--panel-line); }
+
+  h2.section-head {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 32px;
+  }
+
+  .steps {
+    display: grid;
+    gap: 28px;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .step-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 15px;
+  }
+
+  .step-body h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .step-body p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 50ch;
+  }
+
+  /* ---- Big statement ---- */
+  .statement {
+    padding: 88px 0;
+  }
+
+  .statement h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 6vw, 48px);
+    line-height: 1.12;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .statement .line { display: block; }
+  .statement .line.accent { color: var(--accent); }
+
+  /* ---- Prose section ---- */
+  .prose p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin: 0 0 16px;
+  }
+
+  .prose p:last-child { margin-bottom: 0; }
+
+  .prose strong { color: var(--text); font-weight: 600; }
+
+  .shots {
+    display: grid;
+    gap: 20px;
+  }
+
+  .shot {
+    border: 1px solid var(--panel-line);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .shot-caption {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    border: 1px solid var(--panel-line);
+    border-radius: 999px;
+    padding: 7px 14px;
+  }
+
+  /* ---- CTA ---- */
+  .cta {
+    padding: 96px 0 64px;
+    text-align: left;
+  }
+
+  .cta-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 14px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .cta-link:hover { background: #a78bfa; transform: translateY(-1px); }
+
+  footer {
+    padding: 40px 0 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--panel-line);
+    font-size: 14px;
+    color: var(--text-faint);
+  }
+
+  footer a { text-decoration: none; color: var(--text-faint); }
+  footer a:hover { color: var(--text-muted); }
+
+  @media (max-width: 560px) {
+    .step { grid-template-columns: 24px 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero { animation: none; opacity: 1; transform: none; }
+    .typed { width: 28ch; border-right: none; animation: none; }
+    .fade-in { opacity: 1; animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <span class="brand">sapce</span>
+    <a class="top-link" href="mailto:shanikumar14252@gmail.com">Start a conversation →</a>
+  </header>
+
+  <section class="hero">
+    <h1 class="title">Sapce</h1>
+    <p class="subtitle">AI Data Assistant</p>
+    <p class="lede">
+      A local AI assistant that connects to any database, reads its schema
+      on its own, and answers questions about your data in plain English —
+      no cloud, no SQL required.
+    </p>
+
+    <div class="demo">
+      <div class="demo-row">
+        <div class="demo-label">You ask</div>
+        <div class="demo-question"><span id="typedQuestion" class="typed">how's laptop stock looking?</span></div>
+      </div>
+      <div class="demo-row">
+        <div class="demo-label">Sapce generates</div>
+        <div class="demo-sql fade-in" id="sqlLine">SELECT item_name, quantity FROM stock
+WHERE item_name = 'Laptop';</div>
+      </div>
+      <div class="demo-row">
+        <div class="demo-label">Sapce answers</div>
+        <div class="demo-answer fade-in" id="answerLine">Laptop stock is currently at 25 units.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bordered">
+    <h2 class="section-head">How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Connect</h3>
+          <p>Point Sapce at any SQLite, PostgreSQL, or MySQL database with a single connection string.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Auto-scan</h3>
+          <p>It reads the schema and sample rows on its own — no manual setup, no hardcoded tables.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Ask</h3>
+          <p>Plain-English questions become safe SQL queries, answered back in plain language.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <h2>
+      <span class="line">Every database.</span>
+      <span class="line accent">One conversation.</span>
+    </h2>
+  </section>
+
+  <section class="bordered">
+    <h2 class="section-head">See it in action</h2>
+    <div class="shots">
+      <div class="shot">
+        <img src="db_con.png" alt="Sapce's connect-to-database screen, accepting a SQLite, PostgreSQL, or MySQL connection string">
+        <div class="shot-caption">Connect to any database with a single connection string.</div>
+      </div>
+      <div class="shot">
+        <img src="ask_everything.png" alt="Sapce chat window answering a natural-language question about database users and triggering a background alert">
+        <div class="shot-caption">Ask questions in plain English — alerts surface automatically in the same conversation.</div>
+      </div>
+      <div class="shot">
+        <img src="alert.png" alt="Sapce's Set Alert dialog, scoping a threshold to a specific table, column, and row">
+        <div class="shot-caption">Scope an alert to a specific table, column, and row — or apply it to every row.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bordered prose">
+    <h2 class="section-head">Safe by construction</h2>
+    <p>
+      Every generated query is checked before it runs. Only a single
+      read-only <strong>SELECT</strong> is allowed — nothing that could
+      modify or delete data gets anywhere near your tables.
+    </p>
+    <p>
+      Set a threshold on any table or column — one specific product, or
+      every row — and Sapce watches it quietly in the background until
+      something crosses the line you set.
+    </p>
+  </section>
+
+  <section class="statement">
+    <h2>
+      <span class="line">Built to refuse</span>
+      <span class="line accent">bad queries.</span>
+    </h2>
+  </section>
+
+  <section class="bordered">
+    <h2 class="section-head">Built with</h2>
+    <div class="stack">
+      <span class="chip">Python</span>
+      <span class="chip">Ollama</span>
+      <span class="chip">SQLAlchemy</span>
+      <span class="chip">SQLite</span>
+      <span class="chip">CustomTkinter</span>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2 class="section-head" style="font-size: clamp(28px, 5vw, 38px); margin-bottom: 0;">
+      Have data?<br>Let's talk to it.
+    </h2>
+    <a class="cta-link" href="mailto:shanikumar14252@gmail.com">Start a conversation →</a>
+  </section>
+
+  <footer>
+    <span>shani</span>
+    <a href="mailto:shanikumar14252@gmail.com">shanikumar14252@gmail.com</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
